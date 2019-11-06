@@ -6,6 +6,9 @@ set :shared_children, shared_children + %w(log)
 load "defaults"
 load "python"
 
+set :virtualenv_python_binary, "python3"
+set :virtualenv_name, "venv3"
+
 namespace :deploy do
   task :migrate, :only => { :primary => true } do
     run_django_command("migrate --noinput")
