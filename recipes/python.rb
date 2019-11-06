@@ -8,6 +8,7 @@
 set :shared_children, shared_children + %w(venv)
 set :virtualenv_name, "venv"
 set(:virtualenv_path) { "#{shared_path}/#{virtualenv_name}" }
+set :virtualenv_python_binary, "python"
 set :sleep_after_server_start, 1
 
 namespace :deploy do
@@ -24,7 +25,7 @@ namespace :deploy do
                       else
                         ""
                       end
-    run "test -f '#{virtualenv_path}/bin/python' || virtualenv -q #{setuptools_flag} --no-site-packages '#{virtualenv_path}'"
+    run "test -f '#{virtualenv_path}/bin/python' || virtualenv -p #{virtualenv_python_binary} -q #{setuptools_flag} --no-site-packages '#{virtualenv_path}'"
   end
 
   task :install_deps, :roles => :app do
