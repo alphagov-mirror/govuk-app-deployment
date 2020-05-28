@@ -9,7 +9,7 @@ load "defaults"
 load "ruby"
 load "deploy/assets"
 
-set :assets_prefix, "frontend"
+set :assets_prefix, "assets/frontend"
 set :copy_exclude, [
   ".git/*",
   "public/images",

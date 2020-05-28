@@ -6,7 +6,7 @@ load "defaults"
 load "ruby"
 load "deploy/assets"
 
-set :assets_prefix, "static"
+set :assets_prefix, "assets/static"
 set :rails_env, "production"
 set :source_db_config_file, false
 set :db_config_file, false

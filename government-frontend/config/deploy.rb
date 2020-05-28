@@ -6,5 +6,5 @@ load "defaults"
 load "ruby"
 load "deploy/assets"
 
-set :assets_prefix, "government-frontend"
+set :assets_prefix, "assets/government-frontend"
 set :rails_env, "production"
