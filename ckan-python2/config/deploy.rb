@@ -1,19 +1,19 @@
-set :application, "ckan_python3"
+set :application, "ckan"
 set :server_class, "ckan"
 set :capfile_dir, File.expand_path("../", File.dirname(__FILE__))
 set :shared_children, shared_children + %w[log]
 set :repo_name, "ckanext-datagovuk"
 
 load "defaults"
-load "python3"
+load "python"
 
-def run_ckan_command(command)
-  run "cd #{release_path} && govuk_setenv #{application} #{virtualenv_path}/bin/ckan -c /var/ckan/ckan.ini #{command}"
+def run_paster_command(command)
+  run "cd #{release_path} && govuk_setenv #{application} #{virtualenv_path}/bin/paster --plugin ckan #{command} -c /var/ckan/ckan.ini"
 end
 
 namespace :deploy do
   task :migrate, :only => { :primary => true } do
-    run_ckan_command("db upgrade")
+    run_paster_command("db upgrade")
   end
 
   task :install_deps, roles: :app do
@@ -21,7 +21,7 @@ namespace :deploy do
   end
 
   task :install_package, roles: :app do
-    run "cd #{release_path} && '#{virtualenv_path}/bin/python3.6' #{release_path}/setup.py install"
+    run "cd #{release_path} && '#{virtualenv_path}/bin/python' #{release_path}/setup.py install"
   end
 
   desc "Restart harvest gather process"
