@@ -1,4 +1,4 @@
-set :application, "ckan_python3"
+set :application, "ckan"
 set :server_class, "ckan"
 set :capfile_dir, File.expand_path("../", File.dirname(__FILE__))
 set :shared_children, shared_children + %w[log]
