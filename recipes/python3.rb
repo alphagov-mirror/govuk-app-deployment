@@ -5,7 +5,7 @@
 # "requirements.txt" at the root of your repository. For the sake of simplicity,
 # the latter is usually desirable.
 
-set :virtualenv_name, fetch(:virtualenv_name, "venv")
+set :virtualenv_name, fetch(:virtualenv_name, "venv3")
 set :shared_children, shared_children + [virtualenv_name]
 set :virtualenv_python_binary, fetch(:virtualenv_python_binary, "python3.6")
 set(:virtualenv_path) { "#{shared_path}/#{virtualenv_name}" }
