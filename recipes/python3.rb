@@ -5,7 +5,7 @@
 # "requirements.txt" at the root of your repository. For the sake of simplicity,
 # the latter is usually desirable.
 
-set :virtualenv_name, fetch(:virtualenv_name, "venv3")
+set :virtualenv_name, fetch(:virtualenv_name, "venv")
 set :shared_children, shared_children + [virtualenv_name]
 set :virtualenv_python_binary, fetch(:virtualenv_python_binary, "python3.6")
 set(:virtualenv_path) { "#{shared_path}/#{virtualenv_name}" }
@@ -41,7 +41,7 @@ namespace :deploy do
     # run "test -f '#{virtualenv_path}/bin/python3.6' || virtualenv -p #{virtualenv_python_binary} -q #{setuptools_flag} --no-site-packages '#{virtualenv_path}'"
     run "python3.6 -m venv '#{virtualenv_path}'"
 
-    # virtualenv -p ./Python-3.6.12/python --no-site-packages './venv3x'
+    # virtualenv -p ./Python-3.6.12/python --no-site-packages './venv3'
     # python3.6 -m venv ./venv3 
   end
 
